@@ -6,29 +6,32 @@ pipeline {
     }
 
     stages {
-        stage('Clone Code') {
+        stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/Nathashamaria/devops.git'
+                git 'https://github.com/Nathashamaria/devops.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                dir('welcom-react') {
+                    bat 'npm install'
+                }
             }
         }
 
         stage('Build React App') {
             steps {
-                bat 'npm run build'
+                dir('welcom-react') {
+                    bat 'npm run build'
+                }
             }
         }
     }
 
     post {
         success {
-            echo 'React build successful'
+            echo 'Build successful'
         }
         failure {
             echo 'Build failed'
