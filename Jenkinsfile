@@ -6,12 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Nathashamaria/devops.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 dir('welcom-react') {
