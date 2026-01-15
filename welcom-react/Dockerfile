@@ -2,10 +2,10 @@ FROM node:20
 
 WORKDIR /my-app
 
-COPY welcom-react/package*.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY welcom-react/ .
+COPY . .
 RUN npm run build
 
 CMD ["npm", "start"]
